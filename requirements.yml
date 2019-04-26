@@ -1,0 +1,6 @@
+- name: "geerlingguy.nodejs"
+  version: "5.0.0"
+- name: "avanov.pyenv"
+  version: "1.0.0"
+- name: "rvm.ruby"
+  version: "v2.1.2"

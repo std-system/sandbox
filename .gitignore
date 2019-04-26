@@ -66,4 +66,15 @@ tags
 # Persistent undo
 [._]*.un~
 
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+*.logs
+*.log
+
+### Vagrant Patch ###
+*.box
+
 # End of https://www.gitignore.io/api/vim,linux,macos,ansible

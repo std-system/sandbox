@@ -1,0 +1,40 @@
+---
+- hosts: "default:localhost"
+  connection: "local"
+  become: yes
+  become_user: "root"
+  vars_files:
+  - "config.yml"
+
+  roles:
+  # https://galaxy.ansible.com/geerlingguy/nodejs
+  - role: "geerlingguy.nodejs"
+    nodejs_version: "10.x"
+    when: install_node | default(false)
+
+  # https://galaxy.ansible.com/avanov/pyenv
+  - role: "avanov.pyenv"
+    user: "vagrant"
+    version: "3.7.3"
+    pyenv_env: "user"
+    pyenv_owner: "{{ user }}"
+    pyenv_path: "/home/{{ user }}/.pyenv"
+    pyenv_virtualenvs: []
+    pyenv_python_versions:
+    - "{{ version }}"
+    pyenv_global: "{{ version }}"
+    pyenv_enable_autocompletion: yes
+    pyenv_update_git_install: yes
+    when: install_pyenv | default(false)
+
+#  - role: "ctorgalson.rbenv"
+#    rbenv_users:
+#    - user: "vagrant"
+#      group: "vagrant"
+#    rbenv_users_home_path_prefix: "/home"
+
+  - role: "rvm.ruby"
+    rvm1_rubies:
+    - "2.6.3"
+    rvm1_user: "vagrant"
+    when: install_rvm | default(false)

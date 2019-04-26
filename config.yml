@@ -1,0 +1,3 @@
+install_pyenv: yes
+install_node: yes
+install_rvm: yes

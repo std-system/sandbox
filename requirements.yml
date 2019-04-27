@@ -4,3 +4,5 @@
   version: "1.0.0"
 - name: "rvm.ruby"
   version: "v2.1.2"
+- name: "geerlingguy.postgresql"
+  version: "1.4.5"

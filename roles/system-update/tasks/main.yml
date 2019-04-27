@@ -1,0 +1,10 @@
+---
+- name: "Update system"
+  apt:
+    update_cache: yes
+    upgrade: "dist"
+    autoclean: yes
+    autoremove: yes
+  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
+# TODO Red Hat, etc.

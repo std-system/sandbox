@@ -1,8 +1,7 @@
 FROM ubuntu:18.04 AS base
 RUN \
-  apt-get update && \
-  apt-get upgrade -y -qq && \
-  apt-get install -y -qq \
+  DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -qq > /dev/null \
     ansible \
     git \
     python \

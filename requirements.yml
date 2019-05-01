@@ -6,3 +6,5 @@
   version: "v2.1.2"
 - name: "geerlingguy.postgresql"
   version: "1.4.5"
+- name: "geerlingguy.docker"
+  version: "2.5.2"

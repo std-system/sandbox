@@ -13,6 +13,12 @@
   # local user preferences
   - role: "local"
 
+  # https://galaxy.ansible.com/geerlingguy/docker
+  - role: "geerlingguy.docker"
+    docker_users:
+    - "vagrant"
+    when: install_docker | default(false)
+
   # https://galaxy.ansible.com/geerlingguy/postgresql
   - role: "geerlingguy.postgresql"
     postgresql_users:

@@ -8,3 +8,5 @@
   version: "1.4.5"
 - name: "geerlingguy.docker"
   version: "2.5.2"
+- name: "gantsign.golang"
+  version: "2.1.4"

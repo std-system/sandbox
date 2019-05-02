@@ -52,3 +52,8 @@
     - "2.6.3"
     rvm1_user: "vagrant"
     when: install_rvm | default(false)
+
+  # https://galaxy.ansible.com/gantsign/golang
+  - role: "gantsign.golang"
+    golang_version: "1.12.4"
+    golang_gopath: "${HOME}/go"

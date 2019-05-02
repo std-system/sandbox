@@ -3,3 +3,4 @@ install_node: yes
 install_rvm: yes
 install_pg: yes
 install_docker: yes
+install_go: yes

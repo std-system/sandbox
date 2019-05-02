@@ -57,3 +57,4 @@
   - role: "gantsign.golang"
     golang_version: "1.12.4"
     golang_gopath: "${HOME}/go"
+    when: install_go | default(false)

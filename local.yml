@@ -58,3 +58,8 @@
     golang_version: "1.12.4"
     golang_gopath: "${HOME}/go"
     when: install_go | default(false)
+
+  # https://galaxy.ansible.com/naftulikay/rust-dev
+  - role: "naftulikay.rust-dev"
+    rust_user: "vagrant"
+    rust_version: "1.34.1"

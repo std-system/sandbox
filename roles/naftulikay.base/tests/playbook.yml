@@ -1,0 +1,50 @@
+---
+- name: test
+  hosts: all
+  roles:
+    - role: default
+    - role: naftulikay.degoss
+      degoss_clean_on_failure: false
+      goss_file: goss.yml
+      goss_addtl_dirs: [goss.d]
+      goss_variables:
+        # Helpers
+        ansible_lsb_codename: "{{ ansible_lsb.codename | default('unknown') }}"
+
+        # OPERATING SYSTEMS
+        # Linux
+        is_linux: "{{ is_linux }}"
+
+        # macOS
+        is_darwin: "{{ is_darwin }}"
+        is_mac: "{{ is_mac }}"
+        is_macos: "{{ is_macos }}"
+        is_osx: "{{ is_osx }}"
+
+        # DISTRIBUTIONS
+        # Ubuntu
+        is_ubuntu: "{{ is_ubuntu }}"
+        is_ubuntu_derivative: "{{ is_ubuntu_derivative }}"
+
+        is_ubuntu_bionic: "{{ is_ubuntu_bionic }}"
+        is_ubuntu_bionic_derivative: "{{ is_ubuntu_bionic_derivative }}"
+
+        is_ubuntu_trusty: "{{ is_ubuntu_trusty }}"
+        is_ubuntu_trusty_derivative: "{{ is_ubuntu_trusty_derivative }}"
+
+        is_ubuntu_xenial: "{{ is_ubuntu_xenial }}"
+        is_ubuntu_xenial_derivative: "{{ is_ubuntu_xenial_derivative }}"
+
+        ubuntu_release: "{{ ubuntu_release }}"
+
+        # elementary OS
+        is_elementary_os: "{{ is_elementary_os }}"
+        is_elementary_os_loki: "{{ is_elementary_os_loki }}"
+        is_elementary_os_juno: "{{ is_elementary_os_juno }}"
+
+        elementary_os_release: "{{ elementary_os_release }}"
+
+        # Enterprise Linux
+        is_redhat: "{{ is_redhat }}"
+        is_redhat_derivative: "{{ is_redhat_derivative }}"
+        is_centos: "{{ is_centos }}"

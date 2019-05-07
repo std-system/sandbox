@@ -10,3 +10,5 @@
   version: "2.5.2"
 - name: "gantsign.golang"
   version: "2.1.4"
+- name: "naftulikay.rust-dev"
+  version: "v3.0.0"

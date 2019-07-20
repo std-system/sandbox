@@ -23,7 +23,8 @@ Vagrant.configure("2") do |config|
   # Local files to vm
   config.vm.provision "file", source: "~/.aws", destination: "$HOME/.aws"
   config.vm.provision "file", source: "~/.gitconfig", destination: "$HOME/.gitconfig"
-  config.vm.provision "file", source: "~/.ssh", destination: "$HOME/.ssh"
+  config.vm.provision "file", source: "~/.ssh/id_ed25519", destination: "$HOME/.ssh/id_ed25519"
+  config.vm.provision "file", source: "~/.ssh/config", destination: "$HOME/.ssh/config"
   config.vm.provision "file", source: "~/.vim", destination: "$HOME/.vim"
   config.vm.provision "file", source: "~/.vimrc", destination: "$HOME/.vimrc"
 

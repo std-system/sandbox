@@ -3,6 +3,7 @@ image = foobar
 install:
 	mkdir -p ./roles
 	ansible-galaxy install \
+		--force \
 		-p ./roles \
 		-r ./requirements.yml
 

@@ -63,3 +63,4 @@
   - role: "naftulikay.rust-dev"
     rust_user: "vagrant"
     rust_version: "1.34.1"
+    when: install_rust | default(false)

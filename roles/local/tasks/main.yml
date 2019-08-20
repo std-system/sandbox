@@ -6,6 +6,8 @@
     state: "present"
   with_items:
   - "git"
+  - "gpg"
+  - "make"
   - "vim"
   when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 

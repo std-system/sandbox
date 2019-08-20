@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
 
   # Forward port tcp/3000 from the guest to the host
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  #config.vm.network "forwarded_port", guest: 3000, host: 3000
 
   # Local files to vm
   config.vm.provision "file", source: "~/.aws", destination: "$HOME/.aws"

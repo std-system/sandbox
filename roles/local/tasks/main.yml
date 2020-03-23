@@ -23,3 +23,26 @@
   when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
 # TODO Red Hat, etc.
+
+
+- name: "local directories"
+  file:
+    path: "{{ item }}"
+    owner: "vagrant"
+    group: "vagrant"
+    mode: "0755"
+    state: directory
+  with_items:
+  - "{{ vagrant_home }}/.local/bin"
+  - "{{ vagrant_home }}/.local/src"
+
+- name: "local scripts"
+  copy:
+    src: "{{ item }}"
+    dest: "{{ vagrant_home }}/.local/bin/{{ item }}"
+    owner: "vagrant"
+    group: "vagrant"
+    mode: "0755"
+  with_items:
+  - "b.sh"
+  - "t.sh"

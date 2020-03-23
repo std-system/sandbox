@@ -34,7 +34,7 @@
   # https://galaxy.ansible.com/avanov/pyenv
   - role: "avanov.pyenv"
     user: "vagrant"
-    version: "3.7.3"
+    version: "3.7.7"
     pyenv_env: "user"
     pyenv_owner: "{{ user }}"
     pyenv_path: "/home/{{ user }}/.pyenv"
@@ -49,18 +49,18 @@
   # https://galaxy.ansible.com/rvm/ruby
   - role: "rvm.ruby"
     rvm1_rubies:
-    - "2.6.3"
+    - "2.6.5"
     rvm1_user: "vagrant"
     when: install_rvm | default(false)
 
   # https://galaxy.ansible.com/gantsign/golang
   - role: "gantsign.golang"
-    golang_version: "1.12.4"
+    golang_version: "1.12.17"
     golang_gopath: "${HOME}/go"
     when: install_go | default(false)
 
   # https://galaxy.ansible.com/naftulikay/rust-dev
   - role: "naftulikay.rust-dev"
     rust_user: "vagrant"
-    rust_version: "1.34.1"
+    rust_version: "1.42.0"
     when: install_rust | default(false)

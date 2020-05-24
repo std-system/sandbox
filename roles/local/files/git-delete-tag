@@ -1,0 +1,6 @@
+#!/bin/bash
+set -eu
+TAG_NAME=$1
+
+git tag --delete ${TAG_NAME} || true
+git push --delete origin ${TAG_NAME} || true

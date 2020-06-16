@@ -1,6 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+################################################################################
+# Google Cloud configuration.  Create a configuration file by copying
+# google.rb-sample to google.rb and setting appropriate values.
+################################################################################
+GOOGLE_CONFIG = "./google.rb"
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -13,6 +19,9 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/bionic64"
+  config.vm.provider :google do |google, override|
+    override.vm.box = "google/gce"
+  end
 
   # Forward ssh keys
   config.ssh.forward_agent = true
@@ -70,6 +79,32 @@ Vagrant.configure("2") do |config|
     # Customize the amount of memory on the VM:
     vb.memory = "1024"
   end
+
+  # Google GCE
+  # https://github.com/mitchellh/vagrant-google
+  config.vm.provider :google do |google, override|
+    if File.exist?(GOOGLE_CONFIG)
+      require GOOGLE_CONFIG
+    end
+    # GCP credentials
+    google.google_project_id = $google_project_id
+    google.google_json_key_location = $google_json_key_location
+
+    # GCE instance settings
+    google.image_family = $google_image_family
+    google.machine_type = $google_machine_type
+    google.disk_type = $google_disk_type
+    google.disk_size = $google_disk_size
+    google.autodelete_disk = true
+    #google.preemptible = false
+    #google.auto_restart = true
+
+    # SSH key
+    #override.ssh.username = "vagrant"
+    override.ssh.private_key_path = $ssh_private_key_path
+  end
+
+
   #
   # View the documentation for the provider you are using for more
   # information on available options.

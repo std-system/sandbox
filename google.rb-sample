@@ -1,0 +1,20 @@
+# Google Cloud project ID
+$google_project_id = "forever-project"
+
+# Path to Google Cloud JSON keyfile
+$google_json_key_location = "~/Downloads/forever-project-fb21fa0c2150.json"
+
+# GCE image family, run "gcloud compute images list" to see options
+$google_image_family = "ubuntu-1804-lts"
+
+# GCE machine type
+$google_machine_type = "e2-standard-2"
+
+# GCE machine disk type
+$google_disk_type = "pd-standard"
+
+# GCE machine disk size in GB
+$google_disk_size = 100
+
+# SSH private key path
+$ssh_private_key_path = "~/.ssh/id_ed25519"

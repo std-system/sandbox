@@ -1,7 +1,7 @@
-install_pyenv: no
-install_node: no
+install_pyenv: yes
+install_node: yes
 install_rvm: no
 install_pg: no
-install_docker: no
+install_docker: yes
 install_go: no
 install_rust: no

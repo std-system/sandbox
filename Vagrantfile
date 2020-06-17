@@ -96,12 +96,24 @@ Vagrant.configure("2") do |config|
     google.disk_type = $google_disk_type
     google.disk_size = $google_disk_size
     google.autodelete_disk = true
-    #google.preemptible = false
-    #google.auto_restart = true
+    google.preemptible = $google_preemptible
+    if $google_preemptible
+      # these must be set to these values for preemptible GCE instances
+      google.auto_restart = false
+      google.on_host_maintenance = "TERMINATE"
+    else
+      google.auto_restart = true
+      google.on_host_maintenance = "MIGRATE"
+    end
 
     # SSH key
     #override.ssh.username = "vagrant"
     override.ssh.private_key_path = $ssh_private_key_path
+
+    # Tags
+    google.tags = [
+      "vagrant"
+    ]
   end
 
 

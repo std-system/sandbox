@@ -1,0 +1,40 @@
+---
+- name: "map dokku.me ip address"
+  lineinfile:
+    dest: "/etc/hosts"
+    line: "{{ dokku_dot_me_ip }} dokku.me"
+    regexp: "\\sdokku.me"
+    state: "present"
+  become: yes
+  become_user: "root"
+
+  # http://dokku.viewdocs.io/dokku/deployment/application-deployment/
+- name: "deploy the app"
+  shell: |
+    set -e
+    exec 2>&1
+    SAMPLE_APP=dokku-sample-app
+    SAMPLE_APP_REPO=https://github.com/heroku/ruby-getting-started
+    SAMPLE_APP_DB=railsdatabase
+    if [[ ! -e "${SAMPLE_APP}" ]]; then
+      git clone "${SAMPLE_APP_REPO}" "${SAMPLE_APP}"
+      dokku apps:create "${SAMPLE_APP}" || true
+      dokku postgres:create "${SAMPLE_APP_DB}" || true
+      dokku postgres:link "${SAMPLE_APP_DB}" "${SAMPLE_APP}" || true
+      cd "${SAMPLE_APP}"
+      git remote add dokku "dokku@dokku.me:${SAMPLE_APP}"
+      git push dokku master
+    fi
+    if [[ "{{ enable_https }}" == "True" ]]; then
+      dokku config:set --no-restart "${SAMPLE_APP}" DOKKU_LETSENCRYPT_EMAIL="{{ lets_encrypt_email }}"
+      dokku letsencrypt "${SAMPLE_APP}"
+    fi
+    dokku domains "${SAMPLE_APP}"
+  args:
+    executable: "/bin/bash"
+    chdir: "/home/vagrant"
+  register: "app_deploy"
+
+- name: "app deployment stdout"
+  debug:
+    var: app_deploy.stdout_lines

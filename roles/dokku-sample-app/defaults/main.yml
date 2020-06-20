@@ -1,0 +1,15 @@
+---
+# the ip address to map dokku.me to
+dokku_dot_me_ip: "127.0.0.1"
+
+# sample app repo to clone
+repo: "https://github.com/heroku/ruby-getting-started"
+
+# destination to clone app to
+local_repo: "/home/vagrant/ruby-getting-started"
+
+# Let's Encrypt email address
+lets_encrypt_email: "dokku-sample-app@example.io"
+
+# Should we enable HTTPS via Let's Encrypt?
+enable_https: false

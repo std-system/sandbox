@@ -12,3 +12,5 @@
   version: "2.3.1"
 - name: "naftulikay.rust-dev"
   version: "v3.2.0"
+- name: "dokku_bot.ansible_dokku"
+  version: "v2020.5.12"

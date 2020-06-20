@@ -1,0 +1,7 @@
+---
+- name: "get public ip address"
+  ipify_facts:
+
+- name: "set nip domain"
+  set_fact:
+    nip_domain: "{{ ipify_public_ip | regex_replace('\\.', '-', 3)  }}.nip.io"

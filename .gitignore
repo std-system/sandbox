@@ -8,6 +8,8 @@ roles/geerlingguy.docker
 roles/gantsign.golang
 roles/naftulikay.base
 roles/naftulikay.rust-dev
+roles/dokku_bot.ansible_dokku
+roles/nginxinc.nginx
 *.log
 
 # Created by https://www.gitignore.io/api/vim,linux,macos,emacs,ansible,vagrant
